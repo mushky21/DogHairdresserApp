@@ -23,6 +23,7 @@ namespace Server.Controllers
             _logger = logger;
         }
 
+
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -34,6 +35,14 @@ namespace Server.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [Route("[WeatherForecast/Send]")]
+        [HttpGet]
+        public IEnumerable<string> Send()
+        {
+            var rng = new Random();
+            return new List<string> { "hdhhd", "jjdjd" };
         }
     }
 }
