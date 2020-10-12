@@ -17,3 +17,4 @@ C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\S
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.dll
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.pdb
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.genruntimeconfig.cache
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.csprojAssemblyReference.cache
