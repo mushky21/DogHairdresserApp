@@ -5,12 +5,12 @@ const Navbar = (props) => {
 
     return (
         <nav>
-        <div class="nav-wrapper">
+        <div className="nav-wrapper">
           <span>
-            <a href="#" class="brand-logo">Dog Hairdresser</a>
+            <a href="#" className="brand-logo">Dog Hairdresser</a>
           </span>
           <span>
-            <img src={logo_image} alt="edd" className="circle responsive-img" />
+            <img src={logo_image} alt="dog-haircut" className="circle responsive-img" />
           </span>
 
         </div>
