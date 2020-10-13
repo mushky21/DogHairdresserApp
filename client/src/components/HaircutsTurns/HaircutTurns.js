@@ -3,11 +3,9 @@ import { enviroment } from '../../env'
 
 const HaircutTurns = ({ turns, deleteTurn, editTurn, showPopup }) => {
     const authenticatedUser = enviroment.userId;
-
-
     const turnList = turns.length ? (
         turns.map(turn => {
-            const isEnabled = turn.userId == authenticatedUser
+            const isEnabled = turn.userId = authenticatedUser
             return (
                 <tr key={turn.Id} onClick={() => { showPopup(turn) }}>
                     <td>{turn.firstName}</td>

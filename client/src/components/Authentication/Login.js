@@ -62,27 +62,6 @@ class Login extends Component {
                     </span>
 
                 </form>
-                {/*  <div className="row">
-                    <form className="col s12" >
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input onChange={this.handleChange} placeholder="insert username" id="username" name="username" type="text" className="validate" />
-                                <label htmlFor="username">Username</label>
-
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input onChange={this.handleChange} placeholder="insert password" name="password" id="password" type="text" />
-                                <label htmlFor="password">Password</label>
-                            </div>
-                        </div>
-
-                    </form>
-                    <button onClick={this.login} className="waves-effect waves-light btn" > Login
-                            <i className="material-icons right">send</i>
-                    </button>
-                </div> */}
             </div>
 
         )
