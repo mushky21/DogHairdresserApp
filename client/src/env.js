@@ -1,4 +1,5 @@
 export const enviroment = {
     token:'',
-    username:''
+    username:'',
+    userId:1
 }

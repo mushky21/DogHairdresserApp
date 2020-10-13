@@ -4,6 +4,7 @@ import Login from './components/Authentication/Login';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import HaircutQueue from './components/HaircutsTurns/HaircutQueue';
+import Register from './components/Authentication/Register';
 
 
 
@@ -18,6 +19,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Login}></Route>
             <Route exact path='/haircutQueue' component={HaircutQueue}></Route>
+            <Route exact path='/register' component={Register}></Route>
           </Switch>
         </div>
       </BrowserRouter>
