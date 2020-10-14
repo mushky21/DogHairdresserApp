@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "LheSx34wcdNfPrNhW3xKMv62G4VUMVKQTPfzRx8fyEgnjtL0UQH5QXjpYbWYN32zGgFVXyt6UDw4RCFr+PqsHA==",
+  "dgSpecHash": "xFnZ+wphHx3a93QRE72akEQaBUXQWWohPw9/l+cj4OrYmWnGpxfqFy5nT7q76WdEhuEdY+kam1w0GmqZiTu1Kg==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\Desktop\\מושקי\\ראיונות\\SupersalTask\\DogHairdresserApp\\Server\\Server.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
