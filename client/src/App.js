@@ -5,6 +5,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import HaircutQueue from './components/HaircutsTurns/HaircutQueue';
 import Register from './components/Authentication/Register';
+import "react-datepicker/dist/react-datepicker.css";
+import 'moment-timezone';
+import EditTurn from './components/HaircutsTurns/EditTurn';
+
 
 
 
@@ -20,6 +24,7 @@ class App extends Component {
             <Route exact path='/' component={Login}></Route>
             <Route exact path='/haircutQueue' component={HaircutQueue}></Route>
             <Route exact path='/register' component={Register}></Route>
+            <Route exact path='/editTurn' component={EditTurn}></Route>
           </Switch>
         </div>
       </BrowserRouter>

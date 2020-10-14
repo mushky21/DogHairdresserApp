@@ -11,7 +11,7 @@ img {
 }
 
 span {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 h1 {
@@ -20,11 +20,29 @@ h1 {
   font-weight:4000;
 }
 
-a,button {
+a,button, label{
   margin: 5px;
 }
 
+label {
+  font-size: 15px;
+   color:black;
+  font-weight: 400;
+  margin: 10px;
+}
 
+
+/* .filter__value-container{
+  height: 35px;
+  width: 100px;
+ }
+
+ .select-border{
+   width: 200px;
+ } */
+/*  .options-select {
+  overflow: ellipsis
+} */
 /* tr,div {
   height: 20px;
 } */

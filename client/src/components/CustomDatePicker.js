@@ -1,7 +1,7 @@
 import React, { useState, Component } from "react";
 import DatePicker from "react-datepicker";
 
-import "react-datepicker/dist/react-datepicker.css";
+/* import "react-datepicker/dist/react-datepicker.css"; */
 
 
 class CustomDatePicker extends Component {
@@ -10,18 +10,19 @@ class CustomDatePicker extends Component {
   }
 
   handleChange = (selectedDate) => {
+/*     console.log(selectedDate)
     if (selectedDate.getTime() >= new Date().getTime())
     {
-      console.log(selectedDate)
+    */
       this.setState({
         selectedDate
       })
-    }
+ /*    } */
   }
 
   render() {
     return (
-      <DatePicker id="selectedDate"  selected={this.state.selectedDate} onSelect={this.handleChange} showTimeSelect
+      <DatePicker id="selectedDate" onChange={this.handleChange}  selected={this.state.selectedDate} onSelect={this.handleChange} showTimeSelect
         dateFormat="dd / MM / yyyy HH: mm" />
     );
   }
