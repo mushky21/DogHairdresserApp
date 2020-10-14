@@ -26,6 +26,7 @@ class Login extends Component {
         if (this.state.username && this.state.password) {
             enviroment.token = 'dkjhdahdo';
             enviroment.username = 'mushky23';
+            enviroment.userId=1
             this.props.history.push("/haircutQueue", enviroment);
         }
         else {

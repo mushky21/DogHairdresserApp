@@ -51,13 +51,14 @@ class TurnsFilter extends Component {
                         <DatePicker placeholder="arrival date" id="selectedDate" onChange={this.updateDate} selected={this.state.date}
                             dateFormat="dd / MM / yyyy " />
                     </span>
-                    <div>
                         <button className="btn">Filter
-                    <i className="material-icons right">filter</i>
+                    <i className="material-icons right">filter_list</i>
                         </button>
-                    </div>
-
+                        <button onClick={this.props.clearFilter} type="button" className="btn">Clear filter
+                        <i className="material-icons right">clear</i>
+                </button>
                 </form>
+            
             </div>
         )
 

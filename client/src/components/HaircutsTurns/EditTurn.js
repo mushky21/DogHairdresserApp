@@ -26,12 +26,11 @@ class EditTurn extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if (this.state.updatedDate.getTime() > new Date().getTime()) {
-            if(this.state.updatedDate!==this.state.previousDate)
-            {
+            if (this.state.updatedDate !== this.state.previousDate) {
                 this.setState({
                     errMsg: ""
                 })
-    
+
                 /* this.service.editTurn(this.state.arrivalDate,this.state.turnId); */
             }
         }
@@ -42,7 +41,7 @@ class EditTurn extends Component {
             })
         }
     }
-    
+
     render() {
         return (
             <div>
@@ -65,6 +64,10 @@ class EditTurn extends Component {
                     </div>
 
                 </form>
+                <div>
+                    <button onClick={this.props.history.goBack} className="btn">Back
+                    </button>
+                </div>
             </div>
         )
 

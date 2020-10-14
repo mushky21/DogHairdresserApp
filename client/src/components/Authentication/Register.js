@@ -61,6 +61,10 @@ class Register extends Component {
 
 
                 </form>
+                <div>
+                    <button onClick={this.props.history.goBack} className="btn">Back
+                    </button>
+                </div>
 
             </div>
 

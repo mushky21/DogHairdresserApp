@@ -19,24 +19,27 @@ class AddTurn extends Component {
     //add turn only if the selected date is biggest than current date (at least ig by one minute)
     handleSubmit = (e) => {
         e.preventDefault();
-        if (this.state.arrivalDate.getTime() > new Date().getTime())
-        {
-            this.setState({
-                errMsg:""
-            })
-            this.props.addTurn(this.state.arrivalDate);
+        const arrivalDate = this.state.arrivalDate
+        if (arrivalDate) {
+            if (this.state.arrivalDate.getTime() > new Date().getTime()) {
+                this.setState({
+                    errMsg: ""
+                })
+                this.props.addTurn(this.state.arrivalDate);
+            }
+
+            else {
+                this.setState({
+                    errMsg: "The selected date is been over, please select again  "
+                })
+            }
         }
 
-        else {
-          this.setState({
-              errMsg:"The selected date is been over, please select again  "
-          })
-        }
     }
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>                   
+                <form onSubmit={this.handleSubmit}>
                     <div>
                         <h5 >Add turn for haircut </h5>
                         <p className="error">{this.state.errMsg}</p>
@@ -50,6 +53,11 @@ class AddTurn extends Component {
                     </div>
 
                 </form>
+                <div>
+                    <button onClick={this.props.history.goBack} className="btn">Back
+                    </button>
+                </div>
+
             </div>
         )
 

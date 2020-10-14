@@ -8,6 +8,9 @@ import Register from './components/Authentication/Register';
 import "react-datepicker/dist/react-datepicker.css";
 import 'moment-timezone';
 import EditTurn from './components/HaircutsTurns/EditTurn';
+import 'reactjs-popup/dist/index.css';
+import AddTurn from './components/HaircutsTurns/AddTurn';
+
 
 
 
@@ -25,6 +28,7 @@ class App extends Component {
             <Route exact path='/haircutQueue' component={HaircutQueue}></Route>
             <Route exact path='/register' component={Register}></Route>
             <Route exact path='/editTurn' component={EditTurn}></Route>
+            <Route exact path='/addTurn' component={AddTurn}></Route>
           </Switch>
         </div>
       </BrowserRouter>

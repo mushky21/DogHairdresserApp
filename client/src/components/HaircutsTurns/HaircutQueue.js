@@ -3,7 +3,9 @@ import AddTurn from './AddTurn';
 import HaircutTurns from './HaircutTurns';
 import { enviroment } from '../../env'
 import TurnsFilter from './TurnsFilter';
+
 var moment = require('moment');
+
 
 
 class HaircutQueue extends Component {
@@ -24,7 +26,7 @@ class HaircutQueue extends Component {
     }
 
     componentDidMount() {
-        const haircutTurns = [{ Id: 1, arrivalDate: new Date().toString(), firstName: 'mushky', userId: 1 }]
+        const haircutTurns = [{ Id: 1,dateOfRequest:new Date().toString(), arrivalDate: new Date(2020, 9).toString(), firstName: 'mushky', userId: 1 }]
         this.setState({
             allHaircutTurns: haircutTurns,
             filteredTurns: haircutTurns
@@ -47,6 +49,12 @@ class HaircutQueue extends Component {
         })
     }
 
+    clearFilter = () => {
+        this.setState({
+            filteredTurns: this.state.allHaircutTurns
+        })
+    }
+
     //show popup when user clicked on row 
     showPopup = (turn) => {
         alert(turn.arrivalDate)
@@ -57,11 +65,11 @@ class HaircutQueue extends Component {
 
         //delete turn from api 
         //delete turn from state
-        const haircutTurns = this.state.haircutTurns.filter(turn => {
+        const filteredTurns = this.state.filteredTurns.filter(turn => {
             return turn.id !== turnId
         });
         this.setState({
-            haircutTurns
+            filteredTurns
         })
     }
 
@@ -70,15 +78,17 @@ class HaircutQueue extends Component {
         this.props.history.push("/editTurn", { turnId: turnId, arrivalDate: arrivalDate });
     }
 
-    addTurn = (date) => {
-        const dateOfRequest = new Date().toString()//send to server
+
+
+    navigateToAddTurn = () => {
+        this.props.history.push("/addTurn");
+      /*   const dateOfRequest = new Date().toString()//send to server
         //add to db if the turn did'nt caught and get id from server and name
-        const { haircutTurns } = this.state
-        console.log(haircutTurns)
-        haircutTurns.push({ Id: 2, arrivalDate: date.toString(), firstName: 'mushky', userId: this.state.authenticatedUser })
+        const { filteredTurns } = this.state
+        filteredTurns.push({ Id: 2, arrivalDate: date.toString(), firstName: 'mushky', userId: this.state.authenticatedUser })
         this.setState({
-            haircutTurns
-        })
+            filteredTurns
+        }) */
     }
 
     selectOption = (selectedOption) => {
@@ -87,23 +97,26 @@ class HaircutQueue extends Component {
         )
     }
 
+    logout = () =>{
+        enviroment.userId = ''
+        this.props.history.goBack();
+    }
+
     render() {
         return (
             <div className="container">
                 <h1>Haircut Queue</h1>
-                <TurnsFilter filterTurns={this.filterTurns}></TurnsFilter>
-
-                {/*                 <div className="select-border">
-                    <Select placeholder="select filter" classNamePrefix="filter"
-                        value={this.state.selectedOption}
-                        onChange={this.handleChange}
-                        options={this.state.optionsOfFilter}
-                    />
-                </div> */}
+                <TurnsFilter clearFilter={this.clearFilter} filterTurns={this.filterTurns}></TurnsFilter>
                 <HaircutTurns turns={this.state.filteredTurns} showPopup={this.showPopup}
                     deleteTurn={this.deleteTurn} addTurn={this.addTurn} toEditTurn={this.navigateToEditTurn}></HaircutTurns>
                 <div>
-                    <AddTurn addTurn={this.addTurn}></AddTurn>
+                <button onClick={this.navigateToAddTurn} className="btn">
+                   To Add Turn
+                </button>
+                </div>
+                <div>
+                    <button onClick={this.logout} className="btn">Logout
+                    </button>
                 </div>
             </div>
 
