@@ -17,6 +17,9 @@ C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\S
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.genruntimeconfig.cache
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.csprojAssemblyReference.cache
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.csproj.CoreCompileInputs.cache
-C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.csproj.CopyComplete
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\app.config
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\packages\EntityFramework.6.4.4\tools\netcoreapp3.0\any\ef6.runtimeconfig.json
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\Server.dll.config
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\DAL.dll
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\DAL.pdb
