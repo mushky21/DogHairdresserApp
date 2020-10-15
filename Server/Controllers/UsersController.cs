@@ -30,8 +30,6 @@ namespace Server.Controllers
                 Password = password
             };
             var res = _userService.Login(loginModel);
-            //if (foundedUser != null)
-            //    return Ok(new { userId = foundedUser.userId });
             return Ok(res);
 
         }
@@ -40,17 +38,9 @@ namespace Server.Controllers
         //[FromBody] string username, [FromBody] string password, [FromBody] string firstName
         public IActionResult SignUp(UserModel user)
         {
-         var res =   _userService.SignUp(user);
-            //var res = _userService.SignUp(new UserModel
-            //{
-            //    username = username,
-            //    password = password,
-            //    firstName = firstName
-            //});
-            //if (foundedUser != null)
-            //    return Ok(new { userId = foundedUser.userId });
+            var res = _userService.SignUp(user);
             return Ok(res);
 
+        }
     }
-}
 }
