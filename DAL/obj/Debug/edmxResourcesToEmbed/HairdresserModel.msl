@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HairdresserDBModelStoreContainer" CdmEntityContainer="HairdresserDBEntities">
+    <EntitySetMapping Name="HaircutTurns">
+      <EntityTypeMapping TypeName="HairdresserDBModel.HaircutTurn">
+        <MappingFragment StoreEntitySet="HaircutTurns">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="arrivalDate" ColumnName="arrivalDate" />
+          <ScalarProperty Name="dateOfRequest" ColumnName="dateOfRequest" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="isCanceled" ColumnName="isCanceled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="HairdresserDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
