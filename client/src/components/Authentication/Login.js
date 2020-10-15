@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { enviroment } from '../../env'
+import { LoginUser } from '../../api/user-service'
 
 
 class Login extends Component {
@@ -21,13 +22,24 @@ class Login extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        ///api.login(this.state)
-        //if success navigate
         if (this.state.username && this.state.password) {
-            enviroment.token = 'dkjhdahdo';
-            enviroment.username = 'mushky23';
-            enviroment.userId=1
-            this.props.history.push("/haircutQueue", enviroment);
+             LoginUser(this.state.username,this.state.password).then(data=>{
+                 if(data.userId)
+                 {
+                    enviroment.userId = data.userId
+                    this.props.history.push("/haircutQueue");
+                 }
+                 else {
+                     this.setState({
+                         errorMsg:data.errMsg
+                     })
+                 }
+         
+             }).catch((e)=>{
+                 this.setState({
+                     errorMsg:"temporarly problem"
+                 })
+             })
         }
         else {
             this.setState({

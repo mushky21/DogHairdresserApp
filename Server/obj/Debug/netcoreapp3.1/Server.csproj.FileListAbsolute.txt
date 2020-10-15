@@ -36,5 +36,11 @@ C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\S
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\DAL.dll.config
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\מושקי\ראיונות\SupersalTask\DogHairdresserApp\Server\obj\Debug\netcoreapp3.1\Server.MvcApplicationPartsAssemblyInfo.cache

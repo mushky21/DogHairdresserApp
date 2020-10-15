@@ -25,14 +25,30 @@ namespace Server
         }
 
         public IConfiguration Configuration { get; }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:3000").AllowAnyHeader()
+                                        .AllowAnyMethod();
+                                  });
+            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowSpecificOrigin",
+            //        builder => builder.WithOrigins("http://localhost:3000"));
+            //});
             services.AddTransient<IUserRepo, UserRepo>();
             services.AddTransient<IHaircutTurnsRepo, HaircutTurnsRepo>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IHaircutTurnService, HaircutTurnService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,15 +59,20 @@ namespace Server
                 app.UseDeveloperExceptionPage();
             }
 
+
+            app.UseCors();
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(MyAllowSpecificOrigins);
+
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers(
+                    );
             });
         }
     }

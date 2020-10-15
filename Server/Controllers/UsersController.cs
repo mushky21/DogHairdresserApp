@@ -2,87 +2,55 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Server.Models;
+using Server.Services.Interfaces;
 
 namespace Server.Controllers
 {
-    public class UsersController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UsersController : ControllerBase
     {
-        // GET: AuthenticationController
-        public ActionResult Index()
+        private IUserService _userService;
+        public UsersController(IUserService userService)
         {
-            return View();
+            _userService = userService;
         }
-
-        // GET: AuthenticationController/Details/5
-        public ActionResult Login(LoginModel login)
+        // GET: api/users/login?username=mushky&password=mushky23
+        [HttpGet("Login")]
+        public IActionResult Login(string username, string password)
         {
-            return View();
-        }
-
-        // GET: AuthenticationController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AuthenticationController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+            LoginModel loginModel = new LoginModel
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+                Username = username,
+                Password = password
+            };
+            var res = _userService.Login(loginModel);
+            //if (foundedUser != null)
+            //    return Ok(new { userId = foundedUser.userId });
+            return Ok(res);
+
         }
 
-        // GET: AuthenticationController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpPost("SignUp")]
+        //[FromBody] string username, [FromBody] string password, [FromBody] string firstName
+        public IActionResult SignUp(UserModel user)
         {
-            return View();
-        }
+         var res =   _userService.SignUp(user);
+            //var res = _userService.SignUp(new UserModel
+            //{
+            //    username = username,
+            //    password = password,
+            //    firstName = firstName
+            //});
+            //if (foundedUser != null)
+            //    return Ok(new { userId = foundedUser.userId });
+            return Ok(res);
 
-        // POST: AuthenticationController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AuthenticationController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: AuthenticationController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
+}
 }

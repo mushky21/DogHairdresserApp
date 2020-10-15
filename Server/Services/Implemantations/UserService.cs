@@ -20,13 +20,11 @@ namespace Server.Services.Implemantations
         public string Login(LoginModel loginData)
         {
             User user = _userRepo.getUser(loginData.Username, loginData.Password);
-
-            if (user != null)
+            if (user!=null)
             {
                 var res = new
                 {
-                    successMsg = "Login proccess been successfully",
-                    userId = user.userId
+                   userId= user.userId
                 };
                 return JsonConvert.SerializeObject(res);
 
@@ -35,12 +33,10 @@ namespace Server.Services.Implemantations
             {
                 var res = new
                 {
-                    errMsg = "Username or password are invalid"
+                    errMsg = "The username or password is incorrect"
                 };
                 return JsonConvert.SerializeObject(res);
             }
-
-
         }
 
         public string SignUp(UserModel user)
