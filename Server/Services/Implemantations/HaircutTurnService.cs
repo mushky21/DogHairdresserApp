@@ -73,9 +73,9 @@ namespace Server.Services.Implemantations
 
         }
 
-        public string editTurn(DateTime arrivalDate, int turnId)
+        public string editTurn(UpdateTurn updateData)
         {
-            bool isSucceeded = _haircutTurnsRepo.updateTurnByDate(arrivalDate, turnId);
+            bool isSucceeded = _haircutTurnsRepo.updateTurnByDate(updateData.ArrivalDate, updateData.TurnId);
             if (isSucceeded)
             {
                 var res = new
@@ -95,10 +95,10 @@ namespace Server.Services.Implemantations
             }
         }
 
-        public string getTurns()
+        public  string getTurns()
         {
-            List<HaircutTurnWithFirstName> turns = _haircutTurnsRepo.getAllTurns();
-            return JsonConvert.SerializeObject(turns);
+            List<HaircutTurnWithFirstName> turns =  _haircutTurnsRepo.getAllTurns();
+            return JsonConvert.SerializeObject(turns, Formatting.Indented);
         }
     }
 }

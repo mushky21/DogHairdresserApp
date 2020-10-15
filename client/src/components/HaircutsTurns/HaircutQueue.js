@@ -3,6 +3,7 @@ import AddTurn from './AddTurn';
 import HaircutTurns from './HaircutTurns';
 import { enviroment } from '../../env'
 import TurnsFilter from './TurnsFilter';
+import { GetTurns, EditTurn, DeleteTurn } from '../../api/turn-service'
 
 var moment = require('moment');
 
@@ -26,11 +27,20 @@ class HaircutQueue extends Component {
     }
 
     componentDidMount() {
-        const haircutTurns = [{ Id: 1,dateOfRequest:new Date().toString(), arrivalDate: new Date(2020, 9).toString(), firstName: 'mushky', userId: 1 }]
-        this.setState({
-            allHaircutTurns: haircutTurns,
-            filteredTurns: haircutTurns
+        GetTurns().then(turns => {
+            console.log(turns)
+            this.setState({
+                allHaircutTurns: turns,
+                filteredTurns: turns
+            })
+
         })
+
+        /*     const haircutTurns = [{ Id: 1,dateOfRequest:new Date().toString(), arrivalDate: new Date(2020, 9).toString(), firstName: 'mushky', userId: 1 }]
+            this.setState({
+                allHaircutTurns: haircutTurns,
+                filteredTurns: haircutTurns
+            }) */
     }
 
     //filter the list of turns (instead of calling server again and get turns - 
@@ -62,15 +72,28 @@ class HaircutQueue extends Component {
 
     deleteTurn = (turnId, e) => {
         e.stopPropagation();
-
         //delete turn from api 
         //delete turn from state
-        const filteredTurns = this.state.filteredTurns.filter(turn => {
-            return turn.id !== turnId
-        });
-        this.setState({
-            filteredTurns
+        DeleteTurn(turnId).then(data => {
+            if (data.successMsg) {
+                const filteredTurns = this.state.filteredTurns.filter(turn => {
+                    return turn.Id !== turnId
+                });
+                this.setState({
+                    filteredTurns
+                })
+                this.setState({
+                    errMsg: data.successMsg
+                })
+            }
+            else {
+                this.setState({
+                    errMsg: data.errMsg
+                })
+
+            }
         })
+       
     }
 
     navigateToEditTurn = (turnId, arrivalDate, e) => {
@@ -82,13 +105,13 @@ class HaircutQueue extends Component {
 
     navigateToAddTurn = () => {
         this.props.history.push("/addTurn");
-      /*   const dateOfRequest = new Date().toString()//send to server
-        //add to db if the turn did'nt caught and get id from server and name
-        const { filteredTurns } = this.state
-        filteredTurns.push({ Id: 2, arrivalDate: date.toString(), firstName: 'mushky', userId: this.state.authenticatedUser })
-        this.setState({
-            filteredTurns
-        }) */
+        /*   const dateOfRequest = new Date().toString()//send to server
+          //add to db if the turn did'nt caught and get id from server and name
+          const { filteredTurns } = this.state
+          filteredTurns.push({ Id: 2, arrivalDate: date.toString(), firstName: 'mushky', userId: this.state.authenticatedUser })
+          this.setState({
+              filteredTurns
+          }) */
     }
 
     selectOption = (selectedOption) => {
@@ -97,7 +120,7 @@ class HaircutQueue extends Component {
         )
     }
 
-    logout = () =>{
+    logout = () => {
         enviroment.userId = ''
         this.props.history.goBack();
     }
@@ -110,8 +133,8 @@ class HaircutQueue extends Component {
                 <HaircutTurns turns={this.state.filteredTurns} showPopup={this.showPopup}
                     deleteTurn={this.deleteTurn} addTurn={this.addTurn} toEditTurn={this.navigateToEditTurn}></HaircutTurns>
                 <div>
-                <button onClick={this.navigateToAddTurn} className="btn">
-                   To Add Turn
+                    <button onClick={this.navigateToAddTurn} className="btn">
+                        To Add Turn
                 </button>
                 </div>
                 <div>

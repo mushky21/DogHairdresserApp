@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import DatePicker from "react-datepicker";
+import { AddHaircutTurn } from '../../api/turn-service'
 
 class AddTurn extends Component {
     state = {
@@ -22,10 +23,23 @@ class AddTurn extends Component {
         const arrivalDate = this.state.arrivalDate
         if (arrivalDate) {
             if (this.state.arrivalDate.getTime() > new Date().getTime()) {
-                this.setState({
-                    errMsg: ""
+                console.log(arrivalDate)
+                AddHaircutTurn(arrivalDate, new Date()).then(data => {
+                    if (data.successMsg) {
+                        this.setState({
+                            errMsg: data.successMsg
+                        })
+                    }
+                    else 
+                    {
+                        this.setState({
+                            errMsg:data.errMsg
+                        })
+
+                    }
                 })
-                this.props.addTurn(this.state.arrivalDate);
+/* 
+                this.props.addTurn(this.state.arrivalDate); */
             }
 
             else {

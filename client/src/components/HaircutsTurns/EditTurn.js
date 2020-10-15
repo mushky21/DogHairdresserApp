@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DatePicker from "react-datepicker";
 import Moment from 'react-moment';
+import { EditHaircutTurn } from '../../api/turn-service'
 
 
 class EditTurn extends Component {
@@ -27,11 +28,18 @@ class EditTurn extends Component {
         e.preventDefault();
         if (this.state.updatedDate.getTime() > new Date().getTime()) {
             if (this.state.updatedDate !== this.state.previousDate) {
-                this.setState({
-                    errMsg: ""
-                })
+                EditHaircutTurn(this.state.turnId, this.state.updatedDate).then(data => {
+                    if (data.successMsg) {
+                        alert(data.successMsg)
+                        this.props.history.goBack();
+                    }
+                    else {
+                        this.setState({
+                            errMsg: data.errMsg
+                        })
 
-                /* this.service.editTurn(this.state.arrivalDate,this.state.turnId); */
+                    }
+                })
             }
         }
 

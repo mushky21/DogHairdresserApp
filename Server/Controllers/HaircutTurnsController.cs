@@ -11,11 +11,11 @@ namespace Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HaircutsTurnsController : ControllerBase
+    public class HaircutTurnsController : ControllerBase
     {
         private IHaircutTurnService _haircutTurnService;
 
-        public HaircutsTurnsController(IHaircutTurnService haircutTurnService)
+        public HaircutTurnsController(IHaircutTurnService haircutTurnService)
         {
             _haircutTurnService = haircutTurnService;
         }
@@ -29,8 +29,9 @@ namespace Server.Controllers
         }
 
         [HttpPost("AddTurn")]
-        public IActionResult SignUp(HaircutTurnModel turn)
+        public IActionResult AddTurn(HaircutTurnModel turn)
         {
+           var myDt = DateTime.SpecifyKind(turn.arrivalDate, DateTimeKind.Local);
             var res = _haircutTurnService.addTurn(turn);
             return Ok(res);
 
@@ -44,10 +45,10 @@ namespace Server.Controllers
 
         }
 
-        [HttpPut("EditTurn")]
-        public IActionResult EditTurn(int turnId, DateTime arrivalDate)
+        [HttpPost("EditTurn")]
+        public IActionResult EditTurn(UpdateTurn updateData)
         {
-            var res = _haircutTurnService.editTurn(arrivalDate, turnId);
+            var res = _haircutTurnService.editTurn(updateData);
             return Ok(res);
 
         }

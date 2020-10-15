@@ -10,7 +10,7 @@ namespace Server.Services.Interfaces
     {
         string deleteTurn(int turnId);
 
-        string editTurn(DateTime arrivalDate, int turnId);
+        string editTurn(UpdateTurn updateData);
 
         string getTurns();
 

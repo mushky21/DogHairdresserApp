@@ -9,16 +9,16 @@ const HaircutTurns = ({ turns, deleteTurn, toEditTurn, showPopup }) => {
     const authenticatedUser = enviroment.userId;
     const turnList = turns.length ? (
         turns.map(turn => {
-            const isEnabled = turn.userId = authenticatedUser
+            const isEnabled = turn.userId == authenticatedUser
             return (
                 <Popup classNamePerafaix="my-popup" trigger={
                     <tr key={turn.Id} onClick={() => { showPopup(turn) }}>
-                        <td>{turn.firstName}</td>
+                        <td>{turn.FirstName}</td>
                         <td>
                             <Moment format="DD/MM/YYYY HH:mm" date={turn.arrivalDate} />
                         </td>
                         <td>
-                            <button disabled={!isEnabled} onClick={(e) => { deleteTurn(turn.id, e) }} id="deleteBtn"
+                            <button disabled={!isEnabled} onClick={(e) => { deleteTurn(turn.Id, e) }} id="deleteBtn"
                                 className="btn-floating btn-small right red">
                                 <i className="material-icons">delete</i>
                             </button>
@@ -31,7 +31,7 @@ const HaircutTurns = ({ turns, deleteTurn, toEditTurn, showPopup }) => {
                 } position="right center">
                     <div>
                         <div>
-                            name :{turn.firstName}
+                            name :{turn.FirstName}
                         </div>
                         <div>
                             arrival date -

@@ -19,7 +19,7 @@ namespace DAL.Repositories.implementations
         }
 
         //get turn which arrival date is not been over
-        public List<HaircutTurnWithFirstName> getAllTurns()
+        public  List<HaircutTurnWithFirstName> getAllTurns()
         {
             var filtered = from turn in _context.HaircutTurns
                            join user in _context.Users on turn.userId equals user.userId
@@ -33,13 +33,21 @@ namespace DAL.Repositories.implementations
                                userId = turn.userId,
                                Id = turn.Id
                            }; ;
+            //try
+            //{
+                var res = filtered.ToList();
+            //}
+            //catch(Exception e)
+            //{
+                  
+            //}
             return filtered.ToList();
 
         }
 
         public bool updateCanceling(int turnId)
         {
-            int updatedRows = _context.Database.ExecuteSqlCommand("SP_UpdateCanelingOfTurn");
+            int updatedRows = _context.Database.ExecuteSqlCommand("SP_UpdateCanelingOfTurn @p0", turnId);
             return Math.Abs(updatedRows) > 0;
         }
 
