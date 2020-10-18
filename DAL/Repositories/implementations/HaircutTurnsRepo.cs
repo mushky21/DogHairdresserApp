@@ -27,20 +27,13 @@ namespace DAL.Repositories.implementations
                            orderby turn.arrivalDate ascending
                            select new HaircutTurnWithFirstName()
                            {
-                               FirstName = user.firstName,
+                               FirstName = user.firstName.Trim(),
                                dateOfRequest = turn.dateOfRequest,
                                arrivalDate = turn.arrivalDate,
                                userId = turn.userId,
                                Id = turn.Id
-                           }; ;
-            //try
-            //{
-                var res = filtered.ToList();
-            //}
-            //catch(Exception e)
-            //{
-                  
-            //}
+                           }; 
+
             return filtered.ToList();
 
         }

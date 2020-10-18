@@ -8,7 +8,7 @@ namespace Server.Models
     public class HaircutTurnModel
     {
         public long userId { get; set; }
-        public DateTime arrivalDate { get; set; }
-        public DateTime dateOfRequest { get; set; }
+        public string arrivalDate { get; set; }
+        public string dateOfRequest { get; set; }
     }
 }

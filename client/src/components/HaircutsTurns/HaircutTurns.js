@@ -13,7 +13,7 @@ const HaircutTurns = ({ turns, deleteTurn, toEditTurn, showPopup }) => {
             return (
                 <Popup classNamePerafaix="my-popup" trigger={
                     <tr key={turn.Id} onClick={() => { showPopup(turn) }}>
-                        <td>{turn.FirstName}</td>
+                        <td>{turn.firstName}</td>
                         <td>
                             <Moment format="DD/MM/YYYY HH:mm" date={turn.arrivalDate} />
                         </td>
@@ -31,7 +31,7 @@ const HaircutTurns = ({ turns, deleteTurn, toEditTurn, showPopup }) => {
                 } position="right center">
                     <div>
                         <div>
-                            name :{turn.FirstName}
+                            name :{turn.firstName}
                         </div>
                         <div>
                             arrival date -

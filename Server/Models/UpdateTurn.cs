@@ -7,7 +7,7 @@ namespace Server.Models
 {
     public class UpdateTurn
     {
-        public DateTime ArrivalDate { get; set; }
+        public string ArrivalDate { get; set; }
         public int TurnId { get; set; }
     }
 }

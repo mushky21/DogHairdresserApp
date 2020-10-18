@@ -11,10 +11,6 @@ class Register extends Component {
         errorMsg: ''
     }
 
-    /*     constructor(props){
-            super(props)
-        }
-     */
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value

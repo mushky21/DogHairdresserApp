@@ -1,33 +1,40 @@
-import {enviroment} from '../env'
+import { enviroment } from '../env'
 const axios = require('axios');
-const baseUrl = "https://localhost:44361/api/HaircutTurns/"
+const baseUrl = `${enviroment.baseUrl}HaircutTurns/`
+var moment = require('moment');
 
- 
+
 export const GetTurns = async () => {
     const response = await axios.get(`${baseUrl}getturns`)
     return response.data
 }
 
 export const DeleteTurn = async (turnId) => {
-    const res = await axios.get(`${baseUrl}deleteturn`, { params: {
-       turnId:turnId
-    }})
+    const res = await axios.get(`${baseUrl}deleteturn`, {
+        params: {
+            turnId: turnId
+        }
+    })
     return res.data;
 }
 
 export const AddHaircutTurn = async (arrivalDate, dateOfRequest) => {
+    console.log(baseUrl)
+    arrivalDate =  moment(arrivalDate).format("DD/MM/YYYY HH:mm");
+    dateOfRequest =  moment(dateOfRequest).format("DD/MM/YYYY HH:mm");
     const res = await axios.post(`${baseUrl}addturn`, {
         userId: enviroment.userId,
-        arrivalDate: arrivalDate,
-        dateOfRequest: dateOfRequest
+        arrivalDate:arrivalDate /* moment(arrivalDate).format("DD/MM/YYYY HH:mm") */,
+        dateOfRequest:dateOfRequest/*  moment(dateOfRequest).format("DD/MM/YYYY HH:mm") */
     })
     return res.data;
 }
 
 
 export const EditHaircutTurn = async (turnId, arrivalDate) => {
+    arrivalDate = moment(arrivalDate).format("DD/MM/YYYY HH:mm");
     const res = await axios.post(`${baseUrl}editturn`, {
-        ArrivalDate:arrivalDate,
+        ArrivalDate: arrivalDate,
         TurnId: turnId,
 
     })

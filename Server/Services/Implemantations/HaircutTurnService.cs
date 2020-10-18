@@ -26,8 +26,8 @@ namespace Server.Services.Implemantations
             HaircutTurn newTurn = new HaircutTurn
             {
                 userId = turn.userId,
-                arrivalDate = turn.arrivalDate,
-                dateOfRequest = turn.dateOfRequest
+                arrivalDate = Convert.ToDateTime(turn.arrivalDate),
+                dateOfRequest = Convert.ToDateTime(turn.dateOfRequest)
             };
             bool isSucceeded = _haircutTurnsRepo.addTurn(newTurn);
 
@@ -73,9 +73,9 @@ namespace Server.Services.Implemantations
 
         }
 
-        public string editTurn(UpdateTurn updateData)
+        public string editTurn(UpdateTurn updatedData)
         {
-            bool isSucceeded = _haircutTurnsRepo.updateTurnByDate(updateData.ArrivalDate, updateData.TurnId);
+            bool isSucceeded = _haircutTurnsRepo.updateTurnByDate(Convert.ToDateTime(updatedData.ArrivalDate), updatedData.TurnId);
             if (isSucceeded)
             {
                 var res = new
@@ -95,10 +95,10 @@ namespace Server.Services.Implemantations
             }
         }
 
-        public  string getTurns()
+        public  List<HaircutTurnWithFirstName> getTurns()
         {
             List<HaircutTurnWithFirstName> turns =  _haircutTurnsRepo.getAllTurns();
-            return JsonConvert.SerializeObject(turns, Formatting.Indented);
+            return turns;
         }
     }
 }

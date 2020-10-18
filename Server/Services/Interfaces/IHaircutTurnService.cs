@@ -1,4 +1,5 @@
-﻿using Server.Models;
+﻿using DAL.models;
+using Server.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Server.Services.Interfaces
 
         string editTurn(UpdateTurn updateData);
 
-        string getTurns();
+        List<HaircutTurnWithFirstName> getTurns();
 
         string addTurn(HaircutTurnModel turn);
     }

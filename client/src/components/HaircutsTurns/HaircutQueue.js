@@ -3,7 +3,7 @@ import AddTurn from './AddTurn';
 import HaircutTurns from './HaircutTurns';
 import { enviroment } from '../../env'
 import TurnsFilter from './TurnsFilter';
-import { GetTurns, EditTurn, DeleteTurn } from '../../api/turn-service'
+import { GetTurns, DeleteTurn } from '../../api/turn-service'
 
 var moment = require('moment');
 
@@ -19,37 +19,26 @@ class HaircutQueue extends Component {
 
     constructor(props) {
         super(props);
-        //get pramas from navigation 
-        /*         const env = this.props.location.state
-                console.log(env) */
-
-
     }
 
     componentDidMount() {
         GetTurns().then(turns => {
             console.log(turns)
-            this.setState({
+             this.setState({
                 allHaircutTurns: turns,
                 filteredTurns: turns
-            })
+            }) 
 
         })
-
-        /*     const haircutTurns = [{ Id: 1,dateOfRequest:new Date().toString(), arrivalDate: new Date(2020, 9).toString(), firstName: 'mushky', userId: 1 }]
-            this.setState({
-                allHaircutTurns: haircutTurns,
-                filteredTurns: haircutTurns
-            }) */
     }
 
     //filter the list of turns (instead of calling server again and get turns - 
     //filter all turns here by saving the original list of turns)
     filterTurns = (date, firstName) => {
-        console.log(date)
         const dateOfFilter = moment(date).format("YYYY/MM/DD")
         const filteredTurns = this.state.allHaircutTurns.filter(turn => {
-            const arrivalDate = moment(turn.arrivalDate).format("YYYY/MM/DD")
+            const arrivalDate =date? moment(turn.arrivalDate).format("YYYY/MM/DD"):null
+            console.log(turn)
             return (dateOfFilter == arrivalDate || !date)
                 && (firstName == turn.firstName || !firstName)
         })
@@ -105,13 +94,6 @@ class HaircutQueue extends Component {
 
     navigateToAddTurn = () => {
         this.props.history.push("/addTurn");
-        /*   const dateOfRequest = new Date().toString()//send to server
-          //add to db if the turn did'nt caught and get id from server and name
-          const { filteredTurns } = this.state
-          filteredTurns.push({ Id: 2, arrivalDate: date.toString(), firstName: 'mushky', userId: this.state.authenticatedUser })
-          this.setState({
-              filteredTurns
-          }) */
     }
 
     selectOption = (selectedOption) => {

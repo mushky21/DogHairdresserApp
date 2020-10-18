@@ -28,10 +28,10 @@ namespace Server.Controllers
 
         }
 
+
         [HttpPost("AddTurn")]
         public IActionResult AddTurn(HaircutTurnModel turn)
         {
-           var myDt = DateTime.SpecifyKind(turn.arrivalDate, DateTimeKind.Local);
             var res = _haircutTurnService.addTurn(turn);
             return Ok(res);
 

@@ -20,11 +20,11 @@ namespace Server.Services.Implemantations
         public string Login(LoginModel loginData)
         {
             User user = _userRepo.getUser(loginData.Username, loginData.Password);
-            if (user!=null)
+            if (user != null)
             {
                 var res = new
                 {
-                   userId= user.userId
+                    userId = user.userId
                 };
                 return JsonConvert.SerializeObject(res);
 
@@ -41,12 +41,21 @@ namespace Server.Services.Implemantations
 
         public string SignUp(UserModel user)
         {
+            var foundedUser = _userRepo.getUserByUsername(user.username);
+            if (foundedUser != null)
+            {
+                var res = new
+                {
+                    errMsg = "Username already axist. Please type again"
+                };
+            }
             User newUser = new User
             {
                 username = user.username,
                 password = user.password,
                 firstName = user.firstName
             };
+
             bool isSucceeded = _userRepo.addUser(newUser);
 
             if (isSucceeded)
