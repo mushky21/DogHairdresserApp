@@ -1,15 +1,15 @@
 import React from 'react';
-import { enviroment } from '../../env'
 import Moment from 'react-moment';
 import Popup from 'reactjs-popup'
 
 
 
 const HaircutTurns = ({ turns, deleteTurn, toEditTurn, showPopup }) => {
-    const authenticatedUser = enviroment.userId;
+    //authenticated userId
+    const userId = localStorage.getItem('userID');;
     const turnList = turns.length ? (
         turns.map(turn => {
-            const isEnabled = turn.userId == authenticatedUser
+            const isEnabled = turn.userId == userId
             return (
                 <Popup classNamePerafaix="my-popup" trigger={
                     <tr key={turn.Id} onClick={() => { showPopup(turn) }}>

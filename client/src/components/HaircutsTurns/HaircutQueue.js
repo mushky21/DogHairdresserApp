@@ -19,17 +19,21 @@ class HaircutQueue extends Component {
 
     constructor(props) {
         super(props);
-    }
-
-    componentDidMount() {
         GetTurns().then(turns => {
-            console.log(turns)
+            console.log(enviroment.userId)
+            console.log(turns[0])
              this.setState({
                 allHaircutTurns: turns,
                 filteredTurns: turns
             }) 
 
         })
+    }
+
+    componentDidMount() {
+ 
+  
+  
     }
 
     //filter the list of turns (instead of calling server again and get turns - 

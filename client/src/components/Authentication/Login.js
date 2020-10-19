@@ -26,6 +26,7 @@ class Login extends Component {
              LoginUser(this.state.username,this.state.password).then(data=>{
                  if(data.userId)
                  {
+                    localStorage.setItem('userID', data.userId);
                     enviroment.userId = data.userId
                     this.props.history.push("/haircutQueue");
                  }
