@@ -20,7 +20,9 @@ export const DeleteTurn = async (turnId) => {
 
 export const AddHaircutTurn = async (arrivalDate, dateOfRequest) => {
     arrivalDate =  moment(arrivalDate).format("DD/MM/YYYY HH:mm");
-    const userId =  localStorage.getItem('userID');
+    const userId =  parseInt(localStorage.getItem('userID'), 10); 
+    console.log(userId)
+    console.log(`${baseUrl}addturn`)
     dateOfRequest =  moment(dateOfRequest).format("DD/MM/YYYY HH:mm");
     const res = await axios.post(`${baseUrl}addturn`, {
         userId: userId,
