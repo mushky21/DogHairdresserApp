@@ -19,20 +19,18 @@ class HaircutQueue extends Component {
 
     constructor(props) {
         super(props);
+      
+    }
+
+    componentDidMount() {
+ 
         GetTurns().then(turns => {
-            console.log(enviroment.userId)
-            console.log(turns[0])
              this.setState({
                 allHaircutTurns: turns,
                 filteredTurns: turns
             }) 
 
         })
-    }
-
-    componentDidMount() {
- 
-  
   
     }
 
@@ -42,7 +40,6 @@ class HaircutQueue extends Component {
         const dateOfFilter = moment(date).format("YYYY/MM/DD")
         const filteredTurns = this.state.allHaircutTurns.filter(turn => {
             const arrivalDate =date? moment(turn.arrivalDate).format("YYYY/MM/DD"):null
-            console.log(turn)
             return (dateOfFilter == arrivalDate || !date)
                 && (firstName == turn.firstName || !firstName)
         })

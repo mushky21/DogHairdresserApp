@@ -11,7 +11,7 @@ const HaircutTurns = ({ turns, deleteTurn, toEditTurn, showPopup }) => {
         turns.map(turn => {
             const isEnabled = turn.userId == userId
             return (
-                <Popup classNamePerafaix="my-popup" trigger={
+                <Popup key={turn.Id} classNamePerafaix="my-popup" trigger={
                     <tr key={turn.Id} onClick={() => { showPopup(turn) }}>
                         <td>{turn.firstName}</td>
                         <td>

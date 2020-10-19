@@ -22,7 +22,6 @@ class TurnsFilter extends Component {
     }
 
     updateName = (e) => {
-        console.log(e.target.value)
         this.setState({
             firstName: e.target.value
         })
