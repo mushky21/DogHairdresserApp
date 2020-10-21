@@ -66,7 +66,7 @@ class HaircutQueue extends Component {
         DeleteTurn(turnId).then(data => {
             if (data.successMsg) {
                 const filteredTurns = this.state.filteredTurns.filter(turn => {
-                    return turn.Id !== turnId
+                    return turn.id !== turnId
                 });
                 this.setState({
                     filteredTurns

@@ -18,11 +18,11 @@ const HaircutTurns = ({ turns, deleteTurn, toEditTurn, showPopup }) => {
                             <Moment format="DD/MM/YYYY HH:mm" date={turn.arrivalDate} />
                         </td>
                         <td>
-                            <button disabled={!isEnabled} onClick={(e) => { deleteTurn(turn.Id, e) }} id="deleteBtn"
+                            <button disabled={!isEnabled} onClick={(e) => { deleteTurn(turn.id, e) }} id="deleteBtn"
                                 className="btn-floating btn-small right red">
                                 <i className="material-icons">delete</i>
                             </button>
-                            <button disabled={!isEnabled} onClick={(e) => { toEditTurn(turn.Id, turn.arrivalDate, e) }} id="editBtn"
+                            <button disabled={!isEnabled} onClick={(e) => { toEditTurn(turn.id, turn.arrivalDate, e) }} id="editBtn"
                                 className="btn-floating btn-small right red">
                                 <i className="material-icons">edit</i>
                             </button>
