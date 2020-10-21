@@ -22,31 +22,25 @@ class Login extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        if (this.state.username && this.state.password) {
-             LoginUser(this.state.username,this.state.password).then(data=>{
-                 if(data.userId)
-                 {
-                    localStorage.setItem('userID', data.userId);
-                    enviroment.userId = data.userId
-                    this.props.history.push("/haircutQueue");
-                 }
-                 else {
-                     this.setState({
-                         errorMsg:data.errMsg
-                     })
-                 }
-         
-             }).catch((e)=>{
-                 this.setState({
-                     errorMsg:"temporarly problem"
-                 })
-             })
-        }
-        else {
+        const { username, password } = this.state;
+        if (!username || !password)
             this.setState({
                 errorMsg: "Please fill all fields"
             })
+        else {
+            LoginUser(username, password).then(data => {
+                if (data.userId) {
+                    localStorage.setItem('userID', data.userId);
+                    enviroment.userId = data.userId
+                    this.props.history.push("/haircutQueue");
+                }
+                else {
+                    this.setState({
+                        errorMsg: data.errMsg
+                    })
+                }
 
+            })
         }
 
     }

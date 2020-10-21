@@ -10,6 +10,8 @@ import 'moment-timezone';
 import EditTurn from './components/HaircutsTurns/EditTurn';
 import 'reactjs-popup/dist/index.css';
 import AddTurn from './components/HaircutsTurns/AddTurn';
+import { Provider } from 'react-redux';
+import store from './store';
 
 
 
@@ -20,18 +22,21 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div className="App">
-          <Navbar />
-          <Switch>
-            <Route exact path='/' component={Login}></Route>
-            <Route exact path='/haircutQueue' component={HaircutQueue}></Route>
-            <Route exact path='/register' component={Register}></Route>
-            <Route exact path='/editTurn' component={EditTurn}></Route>
-            <Route exact path='/addTurn' component={AddTurn}></Route>
-          </Switch>
-        </div>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <div className="App">
+            <Navbar />
+            <Switch>
+              <Route exact path='/' component={Login}></Route>
+              <Route exact path='/haircutQueue' component={HaircutQueue}></Route>
+              <Route exact path='/register' component={Register}></Route>
+              <Route exact path='/editTurn' component={EditTurn}></Route>
+              <Route exact path='/addTurn' component={AddTurn}></Route>
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </Provider>
+
     )
   }
 }

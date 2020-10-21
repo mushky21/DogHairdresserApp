@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {SignUpUser} from '../../api/user-service'
+import { SignUpUser } from '../../api/user-service'
+
 
 
 class Register extends Component {
@@ -18,31 +19,51 @@ class Register extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
         const { username, password, firstName } = this.state
-        if (username && password && firstName) {
-            ///api.signUp(this.state)
-            //if success navigate to login page
-            SignUpUser(username, password, firstName).then(data =>{
-                if(data.successMsg)
-                {
+        if (!username || !password || !firstName)
+            this.setState({
+                errorMsg: "Please fiil all fields"
+            })
+        else {
+            SignUpUser(username, password, firstName).then(data => {
+                if (data.successMsg) {
                     alert("The registration been successfully")
                     this.props.history.push('/');
                 }
                 else {
                     this.setState({
-                        errorMsg:data.errMsg
+                        errorMsg: data.errMsg
                     })
                 }
-            
-            })
-        
-        }
-        else {
-            this.setState({
-                errorMsg: "Please fiil all fields"
             })
         }
+
+        /*  e.preventDefault();
+         console.log(this.state)
+         const { username, password, firstName } = this.state
+         if (username && password && firstName) {
+             ///api.signUp(this.state)
+             //if success navigate to login page
+             SignUpUser(username, password, firstName).then(data =>{
+                 if(data.successMsg)
+                 {
+                     alert("The registration been successfully")
+                     this.props.history.push('/');
+                 }
+                 else {
+                     this.setState({
+                         errorMsg:data.errMsg
+                     })
+                 }
+             
+             })
+         
+         }
+         else {
+             this.setState({
+                 errorMsg: "Please fiil all fields"
+             })
+         } */
 
     }
 

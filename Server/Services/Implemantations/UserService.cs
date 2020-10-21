@@ -48,6 +48,7 @@ namespace Server.Services.Implemantations
                 {
                     errMsg = "Username already axist. Please type again"
                 };
+                return JsonConvert.SerializeObject(res);
             }
             User newUser = new User
             {

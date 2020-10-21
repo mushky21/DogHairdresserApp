@@ -1,22 +1,17 @@
-import {enviroment} from '../env'
+import { enviroment } from '../env'
 const axios = require('axios');
 const baseUrl = `${enviroment.baseUrl}users/`
 
-export const LoginUser = async (username, password) => {
-    const response = await axios.get(`${baseUrl}login`, {
-        params: {
-            username: username,
-            password: password
-        }
-    })
-    return response.data
-}
-
 export const SignUpUser = async (username, password, firstName) => {
     const res = await axios.post(`${baseUrl}signup`, {
-        username: username,
-        password: password,
-        firstName: firstName
-    })
+        username,
+        password,
+        firstName
+    });
+    return res.data;
+}
+
+export const LoginUser = async (username, password) => {
+    const res = await axios.get(`${baseUrl}login?username=${username}&password=${password}`);
     return res.data;
 }
