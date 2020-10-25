@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import DatePicker from "react-datepicker";
 import Moment from 'react-moment';
-import { EditHaircutTurn } from '../../api/turn-service'
+/* import { EditHaircutTurn } from '../../api/turn-service' */
+import { EditHaircutTurn } from '../../actions/turnActions'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 
 class EditTurn extends Component {
@@ -28,25 +31,35 @@ class EditTurn extends Component {
         e.preventDefault();
         if (this.state.updatedDate.getTime() > new Date().getTime()) {
             if (this.state.updatedDate !== this.state.previousDate) {
-                EditHaircutTurn(this.state.turnId, this.state.updatedDate).then(data => {
-                    if (data.successMsg) {
-                        alert(data.successMsg)
-                        this.props.history.goBack();
-                    }
-                    else {
+                this.props.EditHaircutTurn(data => {
+                    if (data.errMsg)
                         this.setState({
                             errMsg: data.errMsg
                         })
-
+                    else {
+                        alert(data.successMsg)
+                        this.props.history.goBack();
                     }
+                }, this.state.turnId, this.state.updatedDate);
+                /*     EditHaircutTurn(this.state.turnId, this.state.updatedDate).then(data => {
+                        if (data.successMsg) {
+                          
+                        }
+                        else {
+                            this.setState({
+                                errMsg: data.errMsg
+                            })
+    
+                        }
+                    })
+                } */
+            }
+
+            else {
+                this.setState({
+                    errMsg: "The selected date is been over, please select again  "
                 })
             }
-        }
-
-        else {
-            this.setState({
-                errMsg: "The selected date is been over, please select again  "
-            })
         }
     }
 
@@ -82,4 +95,11 @@ class EditTurn extends Component {
     }
 }
 
-export default EditTurn
+EditTurn.propTypes = {
+    EditHaircutTurn: PropTypes.func.isRequired
+}
+
+
+export default connect(null, { EditHaircutTurn })(EditTurn);
+
+/* export default EditTurn */

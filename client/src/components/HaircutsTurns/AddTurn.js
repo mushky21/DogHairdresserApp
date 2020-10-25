@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import DatePicker from "react-datepicker";
-import { AddHaircutTurn } from '../../api/turn-service'
+import { AddHaircutTurn } from '../../actions/turnActions'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+/* import { AddHaircutTurn } from '../../api/turn-service' */
 
 class AddTurn extends Component {
     state = {
@@ -23,23 +27,36 @@ class AddTurn extends Component {
         const arrivalDate = this.state.arrivalDate
         if (arrivalDate) {
             if (this.state.arrivalDate.getTime() > new Date().getTime()) {
-                console.log(arrivalDate)
-                AddHaircutTurn(arrivalDate, new Date()).then(data => {
-                    if (data.successMsg) {
-                        this.setState({
-                            errMsg: data.successMsg
-                        })
-                    }
-                    else 
-                    {
-                        this.setState({
-                            errMsg:data.errMsg
-                        })
+                this.props.AddHaircutTurn(
+                    data => {
+                        if (data.successMsg) {
+                            this.setState({
+                                errMsg: data.successMsg
+                            })
+                        }
+                        else {
+                            this.setState({
+                                errMsg: data.errMsg
+                            })
 
-                    }
-                }).catch(e=>console.log(e))
-/* 
-                this.props.addTurn(this.state.arrivalDate); */
+                        }
+                    }, arrivalDate, new Date());
+                /*   AddHaircutTurn(arrivalDate, new Date()).then(data => {
+                      if (data.successMsg) {
+                          this.setState({
+                              errMsg: data.successMsg
+                          })
+                      }
+                      else 
+                      {
+                          this.setState({
+                              errMsg:data.errMsg
+                          })
+  
+                      }
+                  }).catch(e=>console.log(e))
+  /*  */
+               /*  this.props.addTurn(this.state.arrivalDate); * / */
             }
 
             else {
@@ -78,4 +95,9 @@ class AddTurn extends Component {
     }
 }
 
-export default AddTurn
+AddTurn.propTypes = {
+    AddHaircutTurn: PropTypes.func.isRequired
+}
+
+
+export default connect(null, { AddHaircutTurn })(AddTurn);

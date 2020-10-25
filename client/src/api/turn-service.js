@@ -35,10 +35,11 @@ export const AddHaircutTurn = async (arrivalDate, dateOfRequest) => {
 
 export const EditHaircutTurn = async (turnId, arrivalDate) => {
     arrivalDate = moment(arrivalDate).format("DD/MM/YYYY HH:mm");
-    const res = await axios.post(`${baseUrl}editturn`, {
+     axios.post(`${baseUrl}editturn`, {
         ArrivalDate: arrivalDate,
         TurnId: turnId,
 
+    }).then(res=> {
+       
     })
-    return res.data;
 }
